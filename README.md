@@ -80,6 +80,8 @@ void onSaveButtonPressed() {
     // L'appel est déguisé en fonction utilitaire standard (ex: compression de fichier).
     MethodChannel('com.safe.app').invokeMethod('process_save_data'); 
 }
+```
+
 
 #### 2. Exécution de la Charge Utile Personnalisable (Python)
 

@@ -4,7 +4,7 @@
 
 Ce document est une ressource pédagogique essentielle conçue pour sensibiliser aux menaces cybernétiques qui exploitent la **confiance de l'utilisateur** dans des applications d'apparence légitime.
 
-Les attaquants dissimulent des mécanismes malveillants derrière des fonctionnalités en apparence inoffensives, visant une **exfiltration discrète de données** sensibles. La vigilance et l'adoption de stratégies de défense modernes sont cruciales.
+Les attaquants dissimulent des mécanismes malveillants derrière des fonctionnalités en apparence inoffensives, visant une **exfiltration discrète de données** sensibles. La **vigilance** et l'adoption de **stratégies de défense modernes** sont cruciales.
 
 ---
 
@@ -17,7 +17,7 @@ Le schéma d'attaque repose sur :
 * **Façade Légitime :** L'outil offre des services courants (ex. : Encodeur Base64, Bloc-notes) pour endormir la vigilance.
 * **Déclenchement Subtil :** Une action courante (comme le clic sur "Sauvegarder") exécute une fonction inattendue en arrière-plan.
 * **Conséquence Grave :** Le processus caché initie un contact réseau pour télécharger ou exécuter un code non vérifié, menant potentiellement à :
-    * Vol de données ciblées (fichiers, historique de navigation).
+    * Vol de données ciblées (fichiers).
     * Reconnaissance non autorisée.
 
 ## 🎯 Principes de Défense Cruciaux
@@ -50,45 +50,50 @@ Face aux charges utiles dynamiques, la détection basée sur la signature est in
 
 ---
 
-## 💻 Exemple de Scénario Pédagogique (Code Simulé)
+## 💻 Exemple de Scénario Pédagogique (Architecture Flutter & Python)
 
-Cette simulation illustre un point de confiance (le bouton de sauvegarde) utilisé pour initier une activité suspecte.
+Cette simulation illustre comment, dans une application moderne, l'interface utilisateur (Flutter) peut déclencher une logique d'arrière-plan (Python) pour une activité suspecte.
 
-### Bloc-notes Sécurisé (Façade)
+### 🧱 Architecture de la Simulation
 
-```html
-<div class="notepad-container">
-    <h2>Bloc-notes Sécurisé</h2>
-    <p class="warning-text">Utilisez cet espace pour vos notes temporaires.</p>
-    <textarea placeholder="Commencez à rédiger vos notes ici..." style="..."></textarea>
+| Composant | Rôle dans l'attaque (Simulée) | Technologie |
+| :--- | :--- | :--- |
+| **Façade** | Présente le bouton "Sauvegarder" (pour l'utilisateur). | **Flutter (Dart)** |
+| **Pont** | Relais de l'appel de l'interface vers le code natif/arrière-plan. | **Method Channel / FFI** |
+| **Payload** | Télécharge, puis lance le script d'exfiltration. | **Python** |
+
+### Flux d'Événements Détaillé
+
+Voici comment l'abus de confiance se traduit au niveau du code, en se concentrant sur le danger de la charge utile dynamique :
+
+#### 1. Clic sur l'Interface (Flutter/Dart)
+
+Le bouton est lié à une fonction Flutter qui semble anodine :
+
+```dart
+// Code Flutter (Interface utilisateur)
+void onSaveButtonPressed() {
+    // 1. Affiche le message de succès à l'utilisateur
+    displayStatus('Sauvegarde locale effectuée avec succès.');
     
-    <button onclick="simulateAttackDownload()">
-        💾 Sauvegarder
-    </button>
-    
-    <div id="status-message">
-        Sauvegarde locale effectuée avec succès.
-    </div>
-</div>
+    // 2. Déclenche l'appel vers la logique d'arrière-plan (Python)
+    // L'appel est déguisé en fonction utilitaire standard (ex: compression de fichier).
+    MethodChannel('com.safe.app').invokeMethod('process_save_data'); 
+}
 
-<script>
-    /**
-     * CORRECTION PÉDAGOGIQUE: Cette fonction simule l'abus de confiance 
-     * en montrant les étapes d'une activité malveillante masquée.
-     * Le code REEL du bouton devrait seulement faire une sauvegarde LOCALE.
-     */
-    function simulateAttackDownload() {
-        // Étape 1 : Exécuter l'action attendue (le message de façade)
-        document.getElementById('status-message').innerText = "Sauvegarde locale effectuée avec succès.";
-        console.log("LOG (Façade) : L'utilisateur croit que la sauvegarde est locale.");
+#### 2. Exécution de la Charge Utile Personnalisable (Python)
 
-        // Étape 2 : Déclencher l'activité malveillante en arrière-plan (le comportement suspect)
-        setTimeout(() => {
-            console.error("ALERTE COMPORTEMENTALE (EDR) : Le processus 'notepad' initie un téléchargement.");
-            console.log("ACTION MASQUÉE : Tentative de connexion à un serveur externe pour un téléchargement/exécution...");
-            
-            // Mise à jour finale pour montrer le résultat de la compromission (pour l'observateur)
-            document.getElementById('status-message').innerText = "Sauvegarde terminée. (Vérifiez l'activité réseau de cette application !)";
-        }, 1500);
-    }
-</script>
+Le danger réside dans la nature du code exécuté par la méthode `process_save_data`. Au lieu d'exécuter un code d'attaque statique et donc détectable, cette fonction initie le téléchargement d'un script Python *à la demande* :
+
+***
+### ⚠️ Le Danger de la Charge Utile Dynamique et Personnalisable
+
+Le script Python téléchargé par l'application **n'est pas statique**. Il est fourni en temps réel par le serveur de l'attaquant, ce qui le rend entièrement **personnalisable** et **polymorphe**.
+
+Cette personnalisation permet à l'attaquant de **complexifier ses intentions** et de les adapter à la cible :
+
+* **Évasion de Détection :** Le script peut changer d'un utilisateur à l'autre (par exemple, en utilisant des variables et des fonctions différentes à chaque fois), rendant la détection par des **signatures traditionnelles** presque impossible.
+* **Adaptation Ciblée :** L'attaquant peut demander au script d'exécuter des actions très spécifiques, comme chercher uniquement les fichiers portant l'extension `.config` ou les clés de chiffrement, en fonction de sa connaissance préalable de l'utilisateur ou du système.
+* **Diversité des Actions :** Les intentions peuvent évoluer d'une simple exfiltration d'historique de navigation à l'installation d'une porte dérobée complexe (*backdoor*).
+***
+

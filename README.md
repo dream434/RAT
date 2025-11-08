@@ -70,22 +70,11 @@ Voici comment l'abus de confiance se traduit au niveau du code, en se concentran
 
 Le bouton est lié à une fonction Flutter qui semble anodine :
 
-```dart
-// Code Flutter (Interface utilisateur)
-void onSaveButtonPressed() {
-    // 1. Affiche le message de succès à l'utilisateur
-    displayStatus('Sauvegarde locale effectuée avec succès.');
-    
-    // 2. Déclenche l'appel vers la logique d'arrière-plan (Python)
-    // L'appel est déguisé en fonction utilitaire standard (ex: compression de fichier).
-    MethodChannel('com.safe.app').invokeMethod('process_save_data'); 
-}
-```
 
 
 #### 2. Exécution de la Charge Utile Personnalisable (Python)
 
-Le danger réside dans la nature du code exécuté par la méthode `process_save_data`. Au lieu d'exécuter un code d'attaque statique et donc détectable, cette fonction initie le téléchargement d'un script Python *à la demande* :
+Le danger réside dans la nature du code exécuté par la méthode `process_save_data`. Au lieu d'exécuter un code d'attaque statique et donc détectable, cette fonction initie le téléchargement d'un script Python :
 
 ***
 ### ⚠️ Le Danger de la Charge Utile Dynamique et Personnalisable

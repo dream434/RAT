@@ -1,0 +1,71 @@
+{
+  "generic": {
+    "SQL syntax error": "Erreur de syntaxe SQL générique",
+    "Unclosed quotation mark after the character string": "Guillemet non fermé dans une chaîne",
+    "Unexpected end of command": "Fin de commande inattendue",
+    "Invalid column name": "Nom de colonne invalide",
+    "Invalid table name": "Nom de table invalide",
+    "Ambiguous column name": "Nom de colonne ambigu",
+    "Data type mismatch": "Type de données incompatible",
+    "Division by zero": "Division par zéro",
+    "String or binary data would be truncated": "Données tronquées",
+    "Cannot insert NULL": "Impossible d'insérer une valeur NULL",
+    "Constraint violation": "Violation de contrainte",
+    "Primary key constraint violation": "Violation de clé primaire",
+    "Foreign key constraint violation": "Violation de clé étrangère",
+    "Unique constraint failed": "Violation de contrainte unique",
+    "Check constraint violation": "Violation de contrainte CHECK",
+    "Incorrect number of arguments": "Nombre d'arguments incorrect",
+    "Too many values": "Trop de valeurs",
+    "Subquery returns more than one row": "Sous-requête retourne plusieurs lignes",
+    "Group by error": "Erreur dans GROUP BY",
+    "Having clause error": "Erreur dans HAVING"
+  },
+  "mysql": {
+    "You have an error in your SQL syntax": "Erreur de syntaxe MySQL",
+    "Warning: mysql_fetch_array() expects parameter 1": "Erreur PHP lors de la récupération des résultats",
+    "Unknown column 'x' in 'field list'": "Colonne inconnue dans la liste des champs",
+    "Column count doesn't match value count": "Nombre de colonnes et de valeurs incompatible",
+    "Duplicate entry": "Entrée en double",
+    "Table doesn't exist": "Table inexistante",
+    "Unknown database": "Base de données inconnue",
+    "Access denied for user": "Accès refusé pour l'utilisateur",
+    "Can't connect to local MySQL server": "Impossible de se connecter au serveur MySQL local",
+    "MySQL server has gone away": "Perte de connexion au serveur MySQL"
+  },
+  "mssql": {
+    "Incorrect syntax near": "Erreur de syntaxe près de…",
+    "Unclosed quotation mark": "Guillemet non fermé",
+    "Invalid object name": "Nom d'objet invalide",
+    "Arithmetic overflow error": "Dépassement arithmétique",
+    "Conversion failed": "Échec de conversion",
+    "String or binary data would be truncated": "Données tronquées",
+    "Violation of PRIMARY KEY constraint": "Violation de clé primaire",
+    "Violation of UNIQUE KEY constraint": "Violation de clé unique",
+    "Violation of FOREIGN KEY constraint": "Violation de clé étrangère",
+    "Divide by zero error encountered": "Division par zéro"
+  },
+  "oracle": {
+    "ORA-00936: missing expression": "Expression manquante",
+    "ORA-00933: SQL command not properly ended": "Commande SQL mal terminée",
+    "ORA-00904: invalid identifier": "Identifiant invalide",
+    "ORA-00942: table or view does not exist": "Table ou vue inexistante",
+    "ORA-01756: quoted string not properly terminated": "Chaîne non terminée",
+    "ORA-01722: invalid number": "Nombre invalide",
+    "ORA-01400: cannot insert NULL": "Impossible d'insérer NULL",
+    "ORA-00001: unique constraint violated": "Violation de contrainte unique",
+    "ORA-28000: account is locked": "Compte verrouillé"
+  },
+  "postgresql": {
+    "ERROR: syntax error at or near": "Erreur de syntaxe",
+    "ERROR: column does not exist": "Colonne inexistante",
+    "ERROR: relation does not exist": "Table ou relation inexistante",
+    "ERROR: division by zero": "Division par zéro",
+    "ERROR: duplicate key value violates unique constraint": "Violation de contrainte unique",
+    "ERROR: null value in column violates not-null constraint": "Valeur NULL interdite",
+    "ERROR: invalid input syntax for integer": "Syntaxe d'entrée invalide pour integer",
+    "FATAL: password authentication failed for user": "Échec d'authentification pour l'utilisateur",
+    "FATAL: database does not exist": "Base de données inexistante",
+    "PANIC: out of memory": "Mémoire insuffisante"
+  }
+}

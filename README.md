@@ -1,3 +1,4 @@
+
 # 🛡️ Sensibilisation : Abus de Confiance et Prévention de l'Exfiltration de Données
 
 ## 💡 Introduction : Adopter l'Approche **Zero Trust**
@@ -96,6 +97,11 @@ Ce document a été créé dans un but strictement **éducatif et de sensibilisa
 * **Intention :** En tant que passionné par la sécurité informatique, l'objectif est d'illustrer les mécanismes d'attaque sophistiqués (comme l'utilisation de charges utiles dynamiques) afin de mieux comprendre et renforcer les défenses contre les menaces réelles.
 * **Avertissement :** Les exemples de code (Dart/Python) sont des **simulations théoriques** et ne doivent en aucun cas être utilisés pour des tentatives d'intrusion, de piratage, ou toute activité illégale. L'utilisation de ces concepts à des fins malveillantes est strictement interdite et non cautionnée.
 * **Éthique :** La cybersécurité est une discipline qui doit toujours être pratiquée de manière éthique et légale (Pénétration Testing, Bug Bounty, etc.) et avec un consentement explicite.
+
+
+## copyright (c) [2025] [Jonathan L]. Tous droits réservés.
+
+
 
 
 

@@ -99,7 +99,7 @@ Ce document a été créé dans un but strictement **éducatif et de sensibilisa
 * **Éthique :** La cybersécurité est une discipline qui doit toujours être pratiquée de manière éthique et légale (Pénétration Testing, Bug Bounty, etc.) et avec un consentement explicite.
 
 
-## copyright (c) [2025] [Jonathan L]. Tous droits réservés.
+## copyright (c) [2025] [OverLab]. Tous droits réservés.
 
 
 
